@@ -13,12 +13,8 @@ WORKDIR /tmp
 RUN wget https://www.cantab.net/users/john.wiseman/Downloads/Beta/linbpq64 && \
     chmod +x linbpq64 && mv linbpq64 /usr/local/bin
 
-# Create an entrypoint script
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-# Set entrypoint to switch user
-ENTRYPOINT ["/entrypoint.sh"]
+RUN addgroup --system --gid 12300 linbpq && \
+    adduser --system --uid 12300 --gid 12300 linbpq
 
 # Default command
 CMD ["linbpq64"]

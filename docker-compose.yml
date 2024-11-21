@@ -10,6 +10,7 @@ services:
     volumes:
       - ./config:/config # Map the local "bpq" directory to the container's LinBPQ working directory
     working_dir: /config
+    user: ${UID}
     command: >
       sh -c "
       /usr/local/bin/linbpq64
