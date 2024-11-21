@@ -1,0 +1,17 @@
+services:
+  linbpq:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: linbpq64:latest
+    container_name: linbpq
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./config:/config # Map the local "bpq" directory to the container's LinBPQ working directory
+    working_dir: /config
+    command: >
+      sh -c "
+      /usr/local/bin/linbpq64
+      "
+    restart: unless-stopped
