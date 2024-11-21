@@ -9,8 +9,11 @@ services:
     tty: true
     volumes:
       - ./config:/config # Map the local "bpq" directory to the container's LinBPQ working directory
+      - ./bpq32.cfg:/config/bpq32.cfg # Map the local "bpq32.cfg" file to the container's LinBPQ configuration file
     working_dir: /config
     user: ${UID}
+    ports:
+      - "0.0.0.0:8000-8100:8000-8100" # Map the container's port range 8000-8002 to the host's IP address
     command: >
       sh -c "
       /usr/local/bin/linbpq64
