@@ -13,7 +13,7 @@ services:
     working_dir: /config
     user: ${UID}
     ports:
-      - "0.0.0.0:8000-8100:8000-8100" # Map the container's port range 8000-8002 to the host's IP address
+      - "0.0.0.0:8700-8720:8700-8720" # Map the container's port range 8000-8002 to the host's IP address
     command: >
       sh -c "
       /usr/local/bin/linbpq64
